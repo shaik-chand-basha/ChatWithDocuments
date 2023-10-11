@@ -1,0 +1,3453 @@
+2023-10-11 17:21:05 [INFO] Question: plot a chart that describes top 10 cities Physicians living?
+2023-10-11 17:21:05 [INFO] Running PandasAI with openai LLM...
+2023-10-11 17:21:05 [INFO] Prompt ID: 515429a0-4bb1-4f2b-939f-2d0017bf2cb3
+2023-10-11 17:21:05 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,jxu7dn3lyr0@icloud.com,9878325604,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,jnq69f89mt2@hotmail.com,0799759900,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,42i31msukf@icloud.com,3073147760,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,sdmmym1b9u2r@zoho.com,6283542679,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,2c5ibxwn_c@yahoo.com,7067239786,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+1st Year Cardiology Fe...,Others
+AANP...,Others
+3rd Year Cardiology Fe...,Others
+Accountant...,Others
+2nd Year Cardiology Fe...,Others
+</dataframe>
+
+<conversation>
+User 1: plot a chart that describes top 10 cities Physicians living?
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-11 17:21:16 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df_physicians = dfs[0]
+    
+    # Process: Manipulating data for analysis
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze: Conducting the actual analysis
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities Physicians Living')
+    plt.savefig('temp_chart.png')
+    plt.close()
+    
+    return {"type": "plot", "value": "temp_chart.png"}
+```
+
+2023-10-11 17:21:16 [INFO] Saving charts to charts\515429a0-4bb1-4f2b-939f-2d0017bf2cb3.png
+2023-10-11 17:21:17 [INFO] Executed in: 11.944217205047607s
+2023-10-11 17:24:12 [INFO] Question: plot a chart that describes top 10 cities Physicians living?
+2023-10-11 17:24:12 [INFO] Running PandasAI with openai LLM...
+2023-10-11 17:24:12 [INFO] Prompt ID: 2cc813be-c3ec-4303-b759-0c30d16de428
+2023-10-11 17:24:13 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,jxu7dn3lyr0@icloud.com,9878325604,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,jnq69f89mt2@hotmail.com,0799759900,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,42i31msukf@icloud.com,3073147760,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,sdmmym1b9u2r@zoho.com,6283542679,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,2c5ibxwn_c@yahoo.com,7067239786,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+1st Year Cardiology Fe...,Others
+AANP...,Others
+3rd Year Cardiology Fe...,Others
+Accountant...,Others
+2nd Year Cardiology Fe...,Others
+</dataframe>
+
+<conversation>
+User 1: plot a chart that describes top 10 cities Physicians living?
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-11 17:24:22 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare
+    df_physicians = dfs[0]
+    
+    # Process
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities Physicians Living')
+    plt.savefig('temp_chart.png')
+    plt.close()
+    
+    return {"type": "plot", "value": "temp_chart.png"}
+```
+
+2023-10-11 17:24:23 [INFO] Saving charts to charts\2cc813be-c3ec-4303-b759-0c30d16de428.png
+2023-10-11 17:24:23 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in chartscc813be-c3ec-4303-b759-0c30d16de428.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "chartscc813be-c3ec-4303-b759-0c30d16de428.png" }
+    """
+    df_physicians = dfs[0]
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities Physicians Living')
+    plt.savefig('charts\x02cc813be-c3ec-4303-b759-0c30d16de428.png')
+    plt.close()
+    return {'type': 'plot', 'value': 'charts\x02cc813be-c3ec-4303-b759-0c30d16de428.png'}
+        ```
+2023-10-11 17:24:23 [WARNING] Error of executing code
+2023-10-11 17:24:23 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-10-11 17:24:23 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 244, in execute_code
+    return analyze_data(self._get_originals(dfs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 26, in analyze_data
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\pyplot.py", line 1119, in savefig
+    res = fig.savefig(*args, **kwargs)  # type: ignore[func-returns-value]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\figure.py", line 3390, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backend_bases.py", line 2187, in print_figure
+    result = print_method(
+             ^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backend_bases.py", line 2043, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backends\backend_agg.py", line 497, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backends\backend_agg.py", line 446, in _print_pil
+    mpl.image.imsave(
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\image.py", line 1656, in imsave
+    image.save(fname, **pil_kwargs)
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\site-packages\PIL\Image.py", line 2429, in save
+    fp = builtins.open(filename, "w+b")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument: 'charts\x02cc813be-c3ec-4303-b759-0c30d16de428.png'
+. Retrying
+2023-10-11 17:24:23 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,jxu7dn3lyr0@icloud.com,9878325604,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,jnq69f89mt2@hotmail.com,0799759900,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,42i31msukf@icloud.com,3073147760,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,sdmmym1b9u2r@zoho.com,6283542679,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,2c5ibxwn_c@yahoo.com,7067239786,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+1st Year Cardiology Fe...,Others
+AANP...,Others
+3rd Year Cardiology Fe...,Others
+Accountant...,Others
+2nd Year Cardiology Fe...,Others
+</dataframe>
+
+The user asked the following question:
+User 1: plot a chart that describes top 10 cities Physicians living?
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare
+    df_physicians = dfs[0]
+    
+    # Process
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities Physicians Living')
+    plt.savefig('temp_chart.png')
+    plt.close()
+    
+    return {"type": "plot", "value": "temp_chart.png"}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 244, in execute_code
+    return analyze_data(self._get_originals(dfs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 26, in analyze_data
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\pyplot.py", line 1119, in savefig
+    res = fig.savefig(*args, **kwargs)  # type: ignore[func-returns-value]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\figure.py", line 3390, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backend_bases.py", line 2187, in print_figure
+    result = print_method(
+             ^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backend_bases.py", line 2043, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backends\backend_agg.py", line 497, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backends\backend_agg.py", line 446, in _print_pil
+    mpl.image.imsave(
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\image.py", line 1656, in imsave
+    image.save(fname, **pil_kwargs)
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\site-packages\PIL\Image.py", line 2429, in save
+    fp = builtins.open(filename, "w+b")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument: 'charts\x02cc813be-c3ec-4303-b759-0c30d16de428.png'
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2023-10-11 17:24:33 [INFO] Saving charts to charts\2cc813be-c3ec-4303-b759-0c30d16de428.png
+2023-10-11 17:24:33 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2023-10-11 17:24:33 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 401, in _clean_code
+    self._check_imports(node)
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 466, in _check_imports
+    raise BadImportError(library)
+pandasai.exceptions.BadImportError: Generated code includes import of os which is not in whitelist.
+. Retrying
+2023-10-11 17:24:33 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,jxu7dn3lyr0@icloud.com,9878325604,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,jnq69f89mt2@hotmail.com,0799759900,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,42i31msukf@icloud.com,3073147760,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,sdmmym1b9u2r@zoho.com,6283542679,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,2c5ibxwn_c@yahoo.com,7067239786,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+1st Year Cardiology Fe...,Others
+AANP...,Others
+3rd Year Cardiology Fe...,Others
+Accountant...,Others
+2nd Year Cardiology Fe...,Others
+</dataframe>
+
+The user asked the following question:
+User 1: plot a chart that describes top 10 cities Physicians living?
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare
+    df_physicians = dfs[0]
+    
+    # Process
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities Physicians Living')
+    plt.savefig('temp_chart.png')
+    plt.close()
+    
+    return {"type": "plot", "value": "temp_chart.png"}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 401, in _clean_code
+    self._check_imports(node)
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 466, in _check_imports
+    raise BadImportError(library)
+pandasai.exceptions.BadImportError: Generated code includes import of os which is not in whitelist.
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2023-10-11 17:24:42 [INFO] Saving charts to charts\2cc813be-c3ec-4303-b759-0c30d16de428.png
+2023-10-11 17:24:42 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in chartscc813be-c3ec-4303-b759-0c30d16de428.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "chartscc813be-c3ec-4303-b759-0c30d16de428.png" }
+    """
+    df_physicians = dfs[0]
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities Physicians Living')
+    plt.savefig('charts\x02cc813be-c3ec-4303-b759-0c30d16de428.png')
+    plt.close()
+    return {'type': 'plot', 'value': 'charts\x02cc813be-c3ec-4303-b759-0c30d16de428.png'}
+        ```
+2023-10-11 17:24:42 [WARNING] Error of executing code
+2023-10-11 17:26:20 [INFO] Question: plot a chart that describes top 10 cities Physicians living?
+2023-10-11 17:26:20 [INFO] Running PandasAI with openai LLM...
+2023-10-11 17:26:20 [INFO] Prompt ID: 6d8c0758-fb81-441f-9507-756c524b792b
+2023-10-11 17:26:20 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,1agvqw@zoho.com,5351214701,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,ues3sim8dv_2@protonmail.com,7685356362,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,zdlot4@icloud.com,5080240790,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,sjo9o7f2n@icloud.com,3745570817,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,xzqt4tj@icloud.com,0196533142,MD,"General Cardiology, In...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+AANP,Others
+2nd Year Cardiology Fellow,Others
+1st Year Cardiology Fellow,Others
+Accountant,Others
+3rd Year Cardiology Fellow,Others
+</dataframe>
+
+<conversation>
+User 1: plot a chart that describes top 10 cities Physicians living?
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-11 17:26:30 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare
+    df_physicians = dfs[0]
+    
+    # Process
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities Physicians Living')
+    plt.savefig('temp_chart.png')
+    plt.close()
+    
+    return {"type": "plot", "value": "temp_chart.png"}
+```
+
+2023-10-11 17:26:30 [INFO] Saving charts to charts/6d8c0758-fb81-441f-9507-756c524b792b.png
+2023-10-11 17:26:30 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in charts/6d8c0758-fb81-441f-9507-756c524b792b.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "charts/6d8c0758-fb81-441f-9507-756c524b792b.png" }
+    """
+    df_physicians = dfs[0]
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities Physicians Living')
+    plt.savefig('charts/6d8c0758-fb81-441f-9507-756c524b792b.png')
+    plt.close()
+    return {'type': 'plot', 'value': 'charts/6d8c0758-fb81-441f-9507-756c524b792b.png'}
+        ```
+2023-10-11 17:26:30 [INFO] Answer: {'type': 'plot', 'value': 'charts/6d8c0758-fb81-441f-9507-756c524b792b.png'}
+2023-10-11 17:26:30 [INFO] Executed in: 10.154212713241577s
+2023-10-11 17:27:14 [INFO] Question: describe diagramatically top 10 cities Physicians living?
+2023-10-11 17:27:14 [INFO] Running PandasAI with openai LLM...
+2023-10-11 17:27:14 [INFO] Prompt ID: 7bd3fa2a-bce6-4342-8703-a4b2cee24e7c
+2023-10-11 17:27:14 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,1agvqw@zoho.com,5351214701,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,ues3sim8dv_2@protonmail.com,7685356362,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,zdlot4@icloud.com,5080240790,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,sjo9o7f2n@icloud.com,3745570817,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,xzqt4tj@icloud.com,0196533142,MD,"General Cardiology, In...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+AANP,Others
+2nd Year Cardiology Fellow,Others
+1st Year Cardiology Fellow,Others
+Accountant,Others
+3rd Year Cardiology Fellow,Others
+</dataframe>
+
+<conversation>
+User 1: describe diagramatically top 10 cities Physicians living?
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-11 17:27:25 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df_physicians = dfs[0]
+    
+    # Process: Manipulating data for analysis
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze: Conducting the actual analysis
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('temp_chart.png')
+    plt.close()
+    
+    # Return the path of the plot
+    return { "type": "plot", "value": "temp_chart.png" }
+```
+
+2023-10-11 17:27:25 [INFO] Saving charts to charts/7bd3fa2a-bce6-4342-8703-a4b2cee24e7c.png
+2023-10-11 17:27:25 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in charts/7bd3fa2a-bce6-4342-8703-a4b2cee24e7c.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "charts/7bd3fa2a-bce6-4342-8703-a4b2cee24e7c.png" }
+    """
+    df_physicians = dfs[0]
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('charts/7bd3fa2a-bce6-4342-8703-a4b2cee24e7c.png')
+    plt.close()
+    return {'type': 'plot', 'value': 'charts/7bd3fa2a-bce6-4342-8703-a4b2cee24e7c.png'}
+        ```
+2023-10-11 17:27:25 [INFO] Answer: {'type': 'plot', 'value': 'charts/7bd3fa2a-bce6-4342-8703-a4b2cee24e7c.png'}
+2023-10-11 17:27:25 [INFO] Executed in: 11.11806607246399s
+2023-10-11 17:28:25 [INFO] Question: describe diagramatically top 10 cities Physicians living?
+2023-10-11 17:28:25 [INFO] Running PandasAI with openai LLM...
+2023-10-11 17:28:25 [INFO] Prompt ID: 62614a6e-bf07-4faf-ae7d-b90b6d8d8a0a
+2023-10-11 17:28:25 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,d5nyots6w8@hotmail.com,9710423654,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,yrif45@protonmail.com,2571799565,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,lnsscmqji_@icloud.com,5327151323,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,70o_-rhtpj12@outlook.com,8689866643,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,rjzp4p_7@yahoo.com,2467379232,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+Accountant,Others
+1st Year Cardiology Fellow,Others
+3rd Year Cardiology Fellow,Others
+AANP,Others
+2nd Year Cardiology Fellow,Others
+</dataframe>
+
+<conversation>
+User 1: describe diagramatically top 10 cities Physicians living?
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-11 17:28:34 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare
+    df_physicians = dfs[0]
+    
+    # Process
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Most Physicians')
+    plt.savefig('temp_chart.png')
+    plt.close()
+    
+    return {"type": "plot", "value": "temp_chart.png"}
+```
+
+2023-10-11 17:28:34 [INFO] Saving charts to plots/62614a6e-bf07-4faf-ae7d-b90b6d8d8a0a.png
+2023-10-11 17:28:34 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in plots/62614a6e-bf07-4faf-ae7d-b90b6d8d8a0a.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "plots/62614a6e-bf07-4faf-ae7d-b90b6d8d8a0a.png" }
+    """
+    df_physicians = dfs[0]
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Most Physicians')
+    plt.savefig('plots/62614a6e-bf07-4faf-ae7d-b90b6d8d8a0a.png')
+    plt.close()
+    return {'type': 'plot', 'value': 'plots/62614a6e-bf07-4faf-ae7d-b90b6d8d8a0a.png'}
+        ```
+2023-10-11 17:28:35 [INFO] Answer: {'type': 'plot', 'value': 'plots/62614a6e-bf07-4faf-ae7d-b90b6d8d8a0a.png'}
+2023-10-11 17:28:35 [INFO] Executed in: 9.911075353622437s
+2023-10-11 17:29:24 [INFO] Question: describe diagramatically top 10 cities Physicians living?
+2023-10-11 17:29:25 [INFO] Running PandasAI with openai LLM...
+2023-10-11 17:29:25 [INFO] Prompt ID: 7d7c25d4-209f-436d-b1b7-a07e5805f74c
+2023-10-11 17:29:25 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,7ectp63y6zh@yahoo.com,3174135110,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,og0q0sec@gmail.com,1749926175,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,p4l0a1j3d@gmail.com,0113554145,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,o7zppb3_o5@hotmail.com,0349449945,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,11-fwx@icloud.com,6003064039,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+Accountant,Others
+1st Year Cardiology Fellow,Others
+3rd Year Cardiology Fellow,Others
+2nd Year Cardiology Fellow,Others
+AANP,Others
+</dataframe>
+
+<conversation>
+User 1: describe diagramatically top 10 cities Physicians living?
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-11 17:29:36 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df_physicians = dfs[0]
+    
+    # Process: Manipulating data for analysis
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze: Conducting the actual analysis
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Most Physicians')
+    plt.savefig('temp_chart.png')
+    plt.close()
+    
+    return { "type": "plot", "value": "temp_chart.png" }
+```
+
+2023-10-11 17:29:36 [INFO] Saving charts to plots/7d7c25d4-209f-436d-b1b7-a07e5805f74c.png
+2023-10-11 17:29:36 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in plots/7d7c25d4-209f-436d-b1b7-a07e5805f74c.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "plots/7d7c25d4-209f-436d-b1b7-a07e5805f74c.png" }
+    """
+    df_physicians = dfs[0]
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Most Physicians')
+    plt.savefig('plots/7d7c25d4-209f-436d-b1b7-a07e5805f74c.png')
+    plt.close()
+    return {'type': 'plot', 'value': 'plots/7d7c25d4-209f-436d-b1b7-a07e5805f74c.png'}
+        ```
+2023-10-11 17:29:37 [INFO] Answer: {'type': 'plot', 'value': 'plots/7d7c25d4-209f-436d-b1b7-a07e5805f74c.png'}
+2023-10-11 17:29:37 [INFO] Executed in: 12.222338438034058s
+2023-10-11 17:29:51 [INFO] Question: describe diagramatically top 10 cities Physicians living?
+2023-10-11 17:29:51 [INFO] Running PandasAI with openai LLM...
+2023-10-11 17:29:51 [INFO] Prompt ID: 65df4374-de11-4ed9-b548-b72eb88d9b60
+2023-10-11 17:29:51 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,7ectp63y6zh@yahoo.com,3174135110,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,og0q0sec@gmail.com,1749926175,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,p4l0a1j3d@gmail.com,0113554145,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,o7zppb3_o5@hotmail.com,0349449945,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,11-fwx@icloud.com,6003064039,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+Accountant,Others
+1st Year Cardiology Fellow,Others
+3rd Year Cardiology Fellow,Others
+2nd Year Cardiology Fellow,Others
+AANP,Others
+</dataframe>
+
+<conversation>
+User 1: describe diagramatically top 10 cities Physicians living?
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-11 17:30:01 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df_physicians = dfs[0]
+    
+    # Process: Manipulating data for analysis
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze: Conducting the actual analysis
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Most Physicians')
+    plt.savefig('temp_chart.png')
+    plt.close()
+    
+    return { "type": "plot", "value": "temp_chart.png" }
+```
+
+2023-10-11 17:30:01 [INFO] Saving charts to plots/65df4374-de11-4ed9-b548-b72eb88d9b60.png
+2023-10-11 17:30:01 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in plots/65df4374-de11-4ed9-b548-b72eb88d9b60.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "plots/65df4374-de11-4ed9-b548-b72eb88d9b60.png" }
+    """
+    df_physicians = dfs[0]
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Most Physicians')
+    plt.savefig('plots/65df4374-de11-4ed9-b548-b72eb88d9b60.png')
+    plt.close()
+    return {'type': 'plot', 'value': 'plots/65df4374-de11-4ed9-b548-b72eb88d9b60.png'}
+        ```
+2023-10-11 17:30:01 [INFO] Answer: {'type': 'plot', 'value': 'plots/65df4374-de11-4ed9-b548-b72eb88d9b60.png'}
+2023-10-11 17:30:01 [INFO] Executed in: 10.295862436294556s
+2023-10-11 17:47:29 [INFO] Question: describe diagramatically top 10 cities Physicians living?
+2023-10-11 17:47:30 [INFO] Running PandasAI with openai LLM...
+2023-10-11 17:47:30 [INFO] Prompt ID: a2178a90-8b65-404d-a0fa-5d3fd074eadd
+2023-10-11 17:47:30 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,7ectp63y6zh@yahoo.com,3174135110,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,og0q0sec@gmail.com,1749926175,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,p4l0a1j3d@gmail.com,0113554145,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,o7zppb3_o5@hotmail.com,0349449945,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,11-fwx@icloud.com,6003064039,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+Accountant,Others
+1st Year Cardiology Fellow,Others
+3rd Year Cardiology Fellow,Others
+2nd Year Cardiology Fellow,Others
+AANP,Others
+</dataframe>
+
+<conversation>
+User 1: describe diagramatically top 10 cities Physicians living?
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-11 17:47:39 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df_physicians = dfs[0]
+    
+    # Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze: Conducting the actual analysis
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('export/charts/top_10_cities.png')
+    plt.close()
+    
+    # Return the path of the plot image
+    return { "type": "plot", "value": "export/charts/top_10_cities.png" }
+```
+
+2023-10-11 17:47:39 [INFO] Saving charts to plots/a2178a90-8b65-404d-a0fa-5d3fd074eadd.png
+2023-10-11 17:47:39 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in plots/a2178a90-8b65-404d-a0fa-5d3fd074eadd.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/plots/a2178a90-8b65-404d-a0fa-5d3fd074eadd.png" }
+    """
+    df_physicians = dfs[0]
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('export/charts/top_10_cities.png')
+    plt.close()
+    return {'type': 'plot', 'value': 'export/charts/top_10_cities.png'}
+        ```
+2023-10-11 17:47:39 [WARNING] Error of executing code
+2023-10-11 17:47:39 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-10-11 17:47:39 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 244, in execute_code
+    return analyze_data(self._get_originals(dfs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 19, in analyze_data
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\pyplot.py", line 1119, in savefig
+    res = fig.savefig(*args, **kwargs)  # type: ignore[func-returns-value]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\figure.py", line 3390, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backend_bases.py", line 2187, in print_figure
+    result = print_method(
+             ^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backend_bases.py", line 2043, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backends\backend_agg.py", line 497, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backends\backend_agg.py", line 446, in _print_pil
+    mpl.image.imsave(
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\image.py", line 1656, in imsave
+    image.save(fname, **pil_kwargs)
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\site-packages\PIL\Image.py", line 2429, in save
+    fp = builtins.open(filename, "w+b")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'export/charts/top_10_cities.png'
+. Retrying
+2023-10-11 17:47:39 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,7ectp63y6zh@yahoo.com,3174135110,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,og0q0sec@gmail.com,1749926175,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,p4l0a1j3d@gmail.com,0113554145,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,o7zppb3_o5@hotmail.com,0349449945,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,11-fwx@icloud.com,6003064039,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+Accountant,Others
+1st Year Cardiology Fellow,Others
+3rd Year Cardiology Fellow,Others
+2nd Year Cardiology Fellow,Others
+AANP,Others
+</dataframe>
+
+The user asked the following question:
+User 1: describe diagramatically top 10 cities Physicians living?
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df_physicians = dfs[0]
+    
+    # Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze: Conducting the actual analysis
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('export/charts/top_10_cities.png')
+    plt.close()
+    
+    # Return the path of the plot image
+    return { "type": "plot", "value": "export/charts/top_10_cities.png" }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 244, in execute_code
+    return analyze_data(self._get_originals(dfs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 19, in analyze_data
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\pyplot.py", line 1119, in savefig
+    res = fig.savefig(*args, **kwargs)  # type: ignore[func-returns-value]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\figure.py", line 3390, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backend_bases.py", line 2187, in print_figure
+    result = print_method(
+             ^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backend_bases.py", line 2043, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backends\backend_agg.py", line 497, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backends\backend_agg.py", line 446, in _print_pil
+    mpl.image.imsave(
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\image.py", line 1656, in imsave
+    image.save(fname, **pil_kwargs)
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\site-packages\PIL\Image.py", line 2429, in save
+    fp = builtins.open(filename, "w+b")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'export/charts/top_10_cities.png'
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2023-10-11 17:47:49 [INFO] Saving charts to plots/a2178a90-8b65-404d-a0fa-5d3fd074eadd.png
+2023-10-11 17:47:49 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2023-10-11 17:47:49 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 401, in _clean_code
+    self._check_imports(node)
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 466, in _check_imports
+    raise BadImportError(library)
+pandasai.exceptions.BadImportError: Generated code includes import of os which is not in whitelist.
+. Retrying
+2023-10-11 17:47:49 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,7ectp63y6zh@yahoo.com,3174135110,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,og0q0sec@gmail.com,1749926175,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,p4l0a1j3d@gmail.com,0113554145,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,o7zppb3_o5@hotmail.com,0349449945,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,11-fwx@icloud.com,6003064039,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+Accountant,Others
+1st Year Cardiology Fellow,Others
+3rd Year Cardiology Fellow,Others
+2nd Year Cardiology Fellow,Others
+AANP,Others
+</dataframe>
+
+The user asked the following question:
+User 1: describe diagramatically top 10 cities Physicians living?
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df_physicians = dfs[0]
+    
+    # Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze: Conducting the actual analysis
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('export/charts/top_10_cities.png')
+    plt.close()
+    
+    # Return the path of the plot image
+    return { "type": "plot", "value": "export/charts/top_10_cities.png" }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 401, in _clean_code
+    self._check_imports(node)
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 466, in _check_imports
+    raise BadImportError(library)
+pandasai.exceptions.BadImportError: Generated code includes import of os which is not in whitelist.
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2023-10-11 17:47:58 [INFO] Saving charts to plots/a2178a90-8b65-404d-a0fa-5d3fd074eadd.png
+2023-10-11 17:47:58 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in plots/a2178a90-8b65-404d-a0fa-5d3fd074eadd.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/plots/a2178a90-8b65-404d-a0fa-5d3fd074eadd.png" }
+    """
+    df_physicians = dfs[0]
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('export/charts/top_10_cities.png')
+    plt.close()
+    return {'type': 'plot', 'value': 'export/charts/top_10_cities.png'}
+        ```
+2023-10-11 17:47:58 [WARNING] Error of executing code
+2023-10-11 17:48:49 [INFO] Question: describe diagramatically top 10 cities Physicians living?
+2023-10-11 17:48:49 [INFO] Running PandasAI with openai LLM...
+2023-10-11 17:48:49 [INFO] Prompt ID: 4b5283a7-9fd7-46e0-97aa-b10a2b17990a
+2023-10-11 17:48:49 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,ztr4xwb@protonmail.com,8142541185,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,6obfs0r59bnn@aol.com,6265034490,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,f-n808_1@yahoo.com,8880700303,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,8f-9roq@aol.com,5601195893,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,eduixy_k8m@outlook.com,0799167176,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+2nd Year Cardiology Fe...,Others
+1st Year Cardiology Fe...,Others
+Accountant...,Others
+3rd Year Cardiology Fe...,Others
+AANP...,Others
+</dataframe>
+
+<conversation>
+User 1: describe diagramatically top 10 cities Physicians living?
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-11 17:48:57 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df_physicians = dfs[0]
+    
+    # Process: Manipulating data for analysis
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze: Conducting the actual analysis
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('export/charts/top_10_cities.png')
+    plt.close()
+    
+    return { "type": "plot", "value": "export/charts/top_10_cities.png" }
+```
+
+2023-10-11 17:48:57 [INFO] Saving charts to C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\4b5283a7-9fd7-46e0-97aa-b10a2b17990a.png
+2023-10-11 17:48:57 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-10-11 17:48:57 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 395, in _clean_code
+    tree = ast.parse(code)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\ast.py", line 50, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 15
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\4b5283a7-9fd7-46e0-97aa-b10a2b17990a.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\4b5283a7-9fd7-46e0-97aa-b10a2b17990a.png" }
+    """
+       ^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 277-278: truncated \UXXXXXXXX escape
+. Retrying
+2023-10-11 17:48:57 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,ztr4xwb@protonmail.com,8142541185,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,6obfs0r59bnn@aol.com,6265034490,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,f-n808_1@yahoo.com,8880700303,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,8f-9roq@aol.com,5601195893,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,eduixy_k8m@outlook.com,0799167176,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+2nd Year Cardiology Fe...,Others
+1st Year Cardiology Fe...,Others
+Accountant...,Others
+3rd Year Cardiology Fe...,Others
+AANP...,Others
+</dataframe>
+
+The user asked the following question:
+User 1: describe diagramatically top 10 cities Physicians living?
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df_physicians = dfs[0]
+    
+    # Process: Manipulating data for analysis
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze: Conducting the actual analysis
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('export/charts/top_10_cities.png')
+    plt.close()
+    
+    return { "type": "plot", "value": "export/charts/top_10_cities.png" }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 395, in _clean_code
+    tree = ast.parse(code)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\ast.py", line 50, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 15
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\4b5283a7-9fd7-46e0-97aa-b10a2b17990a.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\4b5283a7-9fd7-46e0-97aa-b10a2b17990a.png" }
+    """
+       ^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 277-278: truncated \UXXXXXXXX escape
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2023-10-11 17:49:05 [INFO] Saving charts to C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\4b5283a7-9fd7-46e0-97aa-b10a2b17990a.png
+2023-10-11 17:49:05 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2023-10-11 17:49:05 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 395, in _clean_code
+    tree = ast.parse(code)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\ast.py", line 50, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 15
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\4b5283a7-9fd7-46e0-97aa-b10a2b17990a.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\4b5283a7-9fd7-46e0-97aa-b10a2b17990a.png" }
+    """
+       ^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 277-278: truncated \UXXXXXXXX escape
+. Retrying
+2023-10-11 17:49:05 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,ztr4xwb@protonmail.com,8142541185,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,6obfs0r59bnn@aol.com,6265034490,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,f-n808_1@yahoo.com,8880700303,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,8f-9roq@aol.com,5601195893,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,eduixy_k8m@outlook.com,0799167176,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+2nd Year Cardiology Fe...,Others
+1st Year Cardiology Fe...,Others
+Accountant...,Others
+3rd Year Cardiology Fe...,Others
+AANP...,Others
+</dataframe>
+
+The user asked the following question:
+User 1: describe diagramatically top 10 cities Physicians living?
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df_physicians = dfs[0]
+    
+    # Process: Manipulating data for analysis
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze: Conducting the actual analysis
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('export/charts/top_10_cities.png')
+    plt.close()
+    
+    return { "type": "plot", "value": "export/charts/top_10_cities.png" }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 395, in _clean_code
+    tree = ast.parse(code)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\ast.py", line 50, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 15
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\4b5283a7-9fd7-46e0-97aa-b10a2b17990a.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\4b5283a7-9fd7-46e0-97aa-b10a2b17990a.png" }
+    """
+       ^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 277-278: truncated \UXXXXXXXX escape
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2023-10-11 17:49:14 [INFO] Saving charts to C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\4b5283a7-9fd7-46e0-97aa-b10a2b17990a.png
+2023-10-11 17:50:23 [INFO] Question: describe diagramatically top 10 cities Physicians living?
+2023-10-11 17:50:23 [INFO] Running PandasAI with openai LLM...
+2023-10-11 17:50:23 [INFO] Prompt ID: 6fb01532-a4d3-4660-b8e9-8b1ad4c5479c
+2023-10-11 17:50:23 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,6mwvpk9@protonmail.com,5905934796,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,ngw_cdq@outlook.com,0821196919,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,db6o6t9@aol.com,5795644467,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,jrvhai@outlook.com,0199836997,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,t9kd_i-cs@aol.com,2160023271,MD,"General Cardiology, In...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+AANP,Others
+1st Year Cardiology Fellow,Others
+Accountant,Others
+3rd Year Cardiology Fellow,Others
+2nd Year Cardiology Fellow,Others
+</dataframe>
+
+<conversation>
+User 1: describe diagramatically top 10 cities Physicians living?
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-11 17:50:32 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df_physicians = dfs[0]
+    
+    # Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze: Conducting the actual analysis
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('export/charts/top_10_cities.png')
+    plt.close()
+    
+    # Return the path of the plot image
+    return { "type": "plot", "value": "export/charts/top_10_cities.png" }
+```
+
+2023-10-11 17:50:32 [INFO] Saving charts to C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\6fb01532-a4d3-4660-b8e9-8b1ad4c5479c.png
+2023-10-11 17:50:32 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-10-11 17:50:33 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 395, in _clean_code
+    tree = ast.parse(code)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\ast.py", line 50, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 15
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\6fb01532-a4d3-4660-b8e9-8b1ad4c5479c.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\6fb01532-a4d3-4660-b8e9-8b1ad4c5479c.png" }
+    """
+       ^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 277-278: truncated \UXXXXXXXX escape
+. Retrying
+2023-10-11 17:50:33 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,6mwvpk9@protonmail.com,5905934796,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,ngw_cdq@outlook.com,0821196919,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,db6o6t9@aol.com,5795644467,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,jrvhai@outlook.com,0199836997,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,t9kd_i-cs@aol.com,2160023271,MD,"General Cardiology, In...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+AANP,Others
+1st Year Cardiology Fellow,Others
+Accountant,Others
+3rd Year Cardiology Fellow,Others
+2nd Year Cardiology Fellow,Others
+</dataframe>
+
+The user asked the following question:
+User 1: describe diagramatically top 10 cities Physicians living?
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df_physicians = dfs[0]
+    
+    # Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze: Conducting the actual analysis
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('export/charts/top_10_cities.png')
+    plt.close()
+    
+    # Return the path of the plot image
+    return { "type": "plot", "value": "export/charts/top_10_cities.png" }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 395, in _clean_code
+    tree = ast.parse(code)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\ast.py", line 50, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 15
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\6fb01532-a4d3-4660-b8e9-8b1ad4c5479c.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\6fb01532-a4d3-4660-b8e9-8b1ad4c5479c.png" }
+    """
+       ^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 277-278: truncated \UXXXXXXXX escape
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2023-10-11 17:50:43 [INFO] Saving charts to C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\6fb01532-a4d3-4660-b8e9-8b1ad4c5479c.png
+2023-10-11 17:50:43 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2023-10-11 17:50:43 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 395, in _clean_code
+    tree = ast.parse(code)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\ast.py", line 50, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 15
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\6fb01532-a4d3-4660-b8e9-8b1ad4c5479c.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\6fb01532-a4d3-4660-b8e9-8b1ad4c5479c.png" }
+    """
+       ^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 277-278: truncated \UXXXXXXXX escape
+. Retrying
+2023-10-11 17:50:43 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,6mwvpk9@protonmail.com,5905934796,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,ngw_cdq@outlook.com,0821196919,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,db6o6t9@aol.com,5795644467,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,jrvhai@outlook.com,0199836997,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,t9kd_i-cs@aol.com,2160023271,MD,"General Cardiology, In...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+AANP,Others
+1st Year Cardiology Fellow,Others
+Accountant,Others
+3rd Year Cardiology Fellow,Others
+2nd Year Cardiology Fellow,Others
+</dataframe>
+
+The user asked the following question:
+User 1: describe diagramatically top 10 cities Physicians living?
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df_physicians = dfs[0]
+    
+    # Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze: Conducting the actual analysis
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('export/charts/top_10_cities.png')
+    plt.close()
+    
+    # Return the path of the plot image
+    return { "type": "plot", "value": "export/charts/top_10_cities.png" }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 395, in _clean_code
+    tree = ast.parse(code)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\ast.py", line 50, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 15
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\6fb01532-a4d3-4660-b8e9-8b1ad4c5479c.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\6fb01532-a4d3-4660-b8e9-8b1ad4c5479c.png" }
+    """
+       ^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 277-278: truncated \UXXXXXXXX escape
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2023-10-11 17:50:52 [INFO] Saving charts to C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\6fb01532-a4d3-4660-b8e9-8b1ad4c5479c.png
+2023-10-11 17:51:21 [INFO] Question: describe diagramatically top 10 cities Physicians living?
+2023-10-11 17:51:21 [INFO] Running PandasAI with openai LLM...
+2023-10-11 17:51:21 [INFO] Prompt ID: 1068587c-5678-4454-852f-bde977d2865a
+2023-10-11 17:51:21 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,ckn02vp65@hotmail.com,3640780467,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,cuzdj2yf0fs@outlook.com,1308349616,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,6xdf328koone@gmail.com,1708646378,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,y-0mef9yvz@protonmail.com,9977229870,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,t213x3odo5j@aol.com,9626892802,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+AANP,Others
+2nd Year Cardiology Fellow,Others
+3rd Year Cardiology Fellow,Others
+Accountant,Others
+1st Year Cardiology Fellow,Others
+</dataframe>
+
+<conversation>
+User 1: describe diagramatically top 10 cities Physicians living?
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-11 17:51:29 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df_physicians = dfs[0]
+    
+    # Process: Manipulating data for analysis
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze: Conducting the actual analysis
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('export/charts/top_10_cities.png')
+    plt.close()
+    
+    return { "type": "plot", "value": "export/charts/top_10_cities.png" }
+```
+
+2023-10-11 17:51:29 [INFO] Saving charts to exports/charts\1068587c-5678-4454-852f-bde977d2865a.png
+2023-10-11 17:51:29 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in exports/chartsF8587c-5678-4454-852f-bde977d2865a.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/exports/chartsF8587c-5678-4454-852f-bde977d2865a.png" }
+    """
+    df_physicians = dfs[0]
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('export/charts/top_10_cities.png')
+    plt.close()
+    return {'type': 'plot', 'value': 'export/charts/top_10_cities.png'}
+        ```
+2023-10-11 17:51:29 [WARNING] Error of executing code
+2023-10-11 17:51:30 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-10-11 17:51:30 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 244, in execute_code
+    return analyze_data(self._get_originals(dfs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 19, in analyze_data
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\pyplot.py", line 1119, in savefig
+    res = fig.savefig(*args, **kwargs)  # type: ignore[func-returns-value]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\figure.py", line 3390, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backend_bases.py", line 2187, in print_figure
+    result = print_method(
+             ^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backend_bases.py", line 2043, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backends\backend_agg.py", line 497, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backends\backend_agg.py", line 446, in _print_pil
+    mpl.image.imsave(
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\image.py", line 1656, in imsave
+    image.save(fname, **pil_kwargs)
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\site-packages\PIL\Image.py", line 2429, in save
+    fp = builtins.open(filename, "w+b")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'export/charts/top_10_cities.png'
+. Retrying
+2023-10-11 17:51:30 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,ckn02vp65@hotmail.com,3640780467,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,cuzdj2yf0fs@outlook.com,1308349616,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,6xdf328koone@gmail.com,1708646378,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,y-0mef9yvz@protonmail.com,9977229870,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,t213x3odo5j@aol.com,9626892802,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+AANP,Others
+2nd Year Cardiology Fellow,Others
+3rd Year Cardiology Fellow,Others
+Accountant,Others
+1st Year Cardiology Fellow,Others
+</dataframe>
+
+The user asked the following question:
+User 1: describe diagramatically top 10 cities Physicians living?
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df_physicians = dfs[0]
+    
+    # Process: Manipulating data for analysis
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze: Conducting the actual analysis
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('export/charts/top_10_cities.png')
+    plt.close()
+    
+    return { "type": "plot", "value": "export/charts/top_10_cities.png" }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 244, in execute_code
+    return analyze_data(self._get_originals(dfs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 19, in analyze_data
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\pyplot.py", line 1119, in savefig
+    res = fig.savefig(*args, **kwargs)  # type: ignore[func-returns-value]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\figure.py", line 3390, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backend_bases.py", line 2187, in print_figure
+    result = print_method(
+             ^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backend_bases.py", line 2043, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backends\backend_agg.py", line 497, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\backends\backend_agg.py", line 446, in _print_pil
+    mpl.image.imsave(
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\matplotlib\image.py", line 1656, in imsave
+    image.save(fname, **pil_kwargs)
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\site-packages\PIL\Image.py", line 2429, in save
+    fp = builtins.open(filename, "w+b")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'export/charts/top_10_cities.png'
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2023-10-11 17:51:40 [INFO] Saving charts to exports/charts\1068587c-5678-4454-852f-bde977d2865a.png
+2023-10-11 17:51:40 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2023-10-11 17:51:40 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 401, in _clean_code
+    self._check_imports(node)
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 466, in _check_imports
+    raise BadImportError(library)
+pandasai.exceptions.BadImportError: Generated code includes import of os which is not in whitelist.
+. Retrying
+2023-10-11 17:51:40 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,ckn02vp65@hotmail.com,3640780467,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,cuzdj2yf0fs@outlook.com,1308349616,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,6xdf328koone@gmail.com,1708646378,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,y-0mef9yvz@protonmail.com,9977229870,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,t213x3odo5j@aol.com,9626892802,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+AANP,Others
+2nd Year Cardiology Fellow,Others
+3rd Year Cardiology Fellow,Others
+Accountant,Others
+1st Year Cardiology Fellow,Others
+</dataframe>
+
+The user asked the following question:
+User 1: describe diagramatically top 10 cities Physicians living?
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df_physicians = dfs[0]
+    
+    # Process: Manipulating data for analysis
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze: Conducting the actual analysis
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('export/charts/top_10_cities.png')
+    plt.close()
+    
+    return { "type": "plot", "value": "export/charts/top_10_cities.png" }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 401, in _clean_code
+    self._check_imports(node)
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 466, in _check_imports
+    raise BadImportError(library)
+pandasai.exceptions.BadImportError: Generated code includes import of os which is not in whitelist.
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2023-10-11 17:51:49 [INFO] Saving charts to exports/charts\1068587c-5678-4454-852f-bde977d2865a.png
+2023-10-11 17:51:49 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in exports/chartsF8587c-5678-4454-852f-bde977d2865a.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/exports/chartsF8587c-5678-4454-852f-bde977d2865a.png" }
+    """
+    df_physicians = dfs[0]
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('export/charts/top_10_cities.png')
+    plt.close()
+    return {'type': 'plot', 'value': 'export/charts/top_10_cities.png'}
+        ```
+2023-10-11 17:51:49 [WARNING] Error of executing code
+2023-10-11 17:54:52 [INFO] Question: describe diagramatically top 10 cities Physicians living?
+2023-10-11 17:54:52 [INFO] Running PandasAI with openai LLM...
+2023-10-11 17:54:52 [INFO] Prompt ID: 33a542e9-7877-40ce-8243-f18398d0b34f
+2023-10-11 17:54:52 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,6h46cdaqveqz@icloud.com,4239623399,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,7j3s1uukoy9@aol.com,0873734533,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,vrnrbzuj8wj@outlook.com,6790732814,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,j7dfo-gqt@yahoo.com,6353313659,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,n1i6by@hotmail.com,2004939279,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+3rd Year Cardiology Fe...,Others
+2nd Year Cardiology Fe...,Others
+AANP...,Others
+Accountant...,Others
+1st Year Cardiology Fe...,Others
+</dataframe>
+
+<conversation>
+User 1: describe diagramatically top 10 cities Physicians living?
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-11 17:55:02 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df_physicians = dfs[0]
+    
+    # Process: Manipulating data for analysis
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze: Conducting the actual analysis
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('export/charts/top_10_cities.png')
+    plt.close()
+    
+    return { "type": "plot", "value": "export/charts/top_10_cities.png" }
+```
+
+2023-10-11 17:55:02 [INFO] Saving charts to C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\33a542e9-7877-40ce-8243-f18398d0b34f.png
+2023-10-11 17:55:02 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-10-11 17:55:02 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 395, in _clean_code
+    tree = ast.parse(code)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\ast.py", line 50, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 15
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\33a542e9-7877-40ce-8243-f18398d0b34f.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\33a542e9-7877-40ce-8243-f18398d0b34f.png" }
+    """
+       ^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 277-278: truncated \UXXXXXXXX escape
+. Retrying
+2023-10-11 17:55:02 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,6h46cdaqveqz@icloud.com,4239623399,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,7j3s1uukoy9@aol.com,0873734533,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,vrnrbzuj8wj@outlook.com,6790732814,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,j7dfo-gqt@yahoo.com,6353313659,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,n1i6by@hotmail.com,2004939279,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+3rd Year Cardiology Fe...,Others
+2nd Year Cardiology Fe...,Others
+AANP...,Others
+Accountant...,Others
+1st Year Cardiology Fe...,Others
+</dataframe>
+
+The user asked the following question:
+User 1: describe diagramatically top 10 cities Physicians living?
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df_physicians = dfs[0]
+    
+    # Process: Manipulating data for analysis
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze: Conducting the actual analysis
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('export/charts/top_10_cities.png')
+    plt.close()
+    
+    return { "type": "plot", "value": "export/charts/top_10_cities.png" }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 395, in _clean_code
+    tree = ast.parse(code)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\ast.py", line 50, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 15
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\33a542e9-7877-40ce-8243-f18398d0b34f.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\33a542e9-7877-40ce-8243-f18398d0b34f.png" }
+    """
+       ^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 277-278: truncated \UXXXXXXXX escape
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2023-10-11 17:55:11 [INFO] Saving charts to C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\33a542e9-7877-40ce-8243-f18398d0b34f.png
+2023-10-11 17:55:11 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2023-10-11 17:55:11 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 395, in _clean_code
+    tree = ast.parse(code)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\ast.py", line 50, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 15
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\33a542e9-7877-40ce-8243-f18398d0b34f.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\33a542e9-7877-40ce-8243-f18398d0b34f.png" }
+    """
+       ^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 277-278: truncated \UXXXXXXXX escape
+. Retrying
+2023-10-11 17:55:11 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,6h46cdaqveqz@icloud.com,4239623399,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,7j3s1uukoy9@aol.com,0873734533,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,vrnrbzuj8wj@outlook.com,6790732814,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,j7dfo-gqt@yahoo.com,6353313659,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,n1i6by@hotmail.com,2004939279,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+3rd Year Cardiology Fe...,Others
+2nd Year Cardiology Fe...,Others
+AANP...,Others
+Accountant...,Others
+1st Year Cardiology Fe...,Others
+</dataframe>
+
+The user asked the following question:
+User 1: describe diagramatically top 10 cities Physicians living?
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df_physicians = dfs[0]
+    
+    # Process: Manipulating data for analysis
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze: Conducting the actual analysis
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('export/charts/top_10_cities.png')
+    plt.close()
+    
+    return { "type": "plot", "value": "export/charts/top_10_cities.png" }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 395, in _clean_code
+    tree = ast.parse(code)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\ast.py", line 50, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 15
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\33a542e9-7877-40ce-8243-f18398d0b34f.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (must be "plot")
+    - value (must be a string containing the path of the plot image)
+    Example output: { "type": "plot", "value": "export/charts/C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\33a542e9-7877-40ce-8243-f18398d0b34f.png" }
+    """
+       ^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 277-278: truncated \UXXXXXXXX escape
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2023-10-11 17:55:20 [INFO] Saving charts to C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\33a542e9-7877-40ce-8243-f18398d0b34f.png
+2023-10-11 17:55:30 [INFO] Question: describe diagramatically top 10 cities Physicians living?
+2023-10-11 17:55:30 [INFO] Running PandasAI with openai LLM...
+2023-10-11 17:55:30 [INFO] Prompt ID: 617e7b6d-8d3d-4a54-87d9-a491d43aa967
+2023-10-11 17:55:30 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,6h46cdaqveqz@icloud.com,4239623399,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,7j3s1uukoy9@aol.com,0873734533,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,vrnrbzuj8wj@outlook.com,6790732814,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,j7dfo-gqt@yahoo.com,6353313659,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,n1i6by@hotmail.com,2004939279,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+3rd Year Cardiology Fe...,Others
+2nd Year Cardiology Fe...,Others
+AANP...,Others
+Accountant...,Others
+1st Year Cardiology Fe...,Others
+</dataframe>
+
+<conversation>
+User 1: describe diagramatically top 10 cities Physicians living?
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-11 17:55:40 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare
+    df_physicians = dfs[0]
+    
+    # Process
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Most Physicians')
+    plt.savefig('temp_chart.png')
+    plt.close()
+    
+    return {"type": "plot", "value": "temp_chart.png"}
+```
+
+2023-10-11 17:55:40 [INFO] Saving charts to C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\617e7b6d-8d3d-4a54-87d9-a491d43aa967.png
+2023-10-11 17:55:40 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-10-11 17:55:40 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 395, in _clean_code
+    tree = ast.parse(code)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\ast.py", line 50, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 22
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\617e7b6d-8d3d-4a54-87d9-a491d43aa967.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\617e7b6d-8d3d-4a54-87d9-a491d43aa967.png" }
+    """
+       ^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 277-278: truncated \UXXXXXXXX escape
+. Retrying
+2023-10-11 17:55:40 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,6h46cdaqveqz@icloud.com,4239623399,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,7j3s1uukoy9@aol.com,0873734533,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,vrnrbzuj8wj@outlook.com,6790732814,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,j7dfo-gqt@yahoo.com,6353313659,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,n1i6by@hotmail.com,2004939279,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+3rd Year Cardiology Fe...,Others
+2nd Year Cardiology Fe...,Others
+AANP...,Others
+Accountant...,Others
+1st Year Cardiology Fe...,Others
+</dataframe>
+
+The user asked the following question:
+User 1: describe diagramatically top 10 cities Physicians living?
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare
+    df_physicians = dfs[0]
+    
+    # Process
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Most Physicians')
+    plt.savefig('temp_chart.png')
+    plt.close()
+    
+    return {"type": "plot", "value": "temp_chart.png"}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 395, in _clean_code
+    tree = ast.parse(code)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\ast.py", line 50, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 22
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\617e7b6d-8d3d-4a54-87d9-a491d43aa967.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\617e7b6d-8d3d-4a54-87d9-a491d43aa967.png" }
+    """
+       ^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 277-278: truncated \UXXXXXXXX escape
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2023-10-11 17:55:50 [INFO] Saving charts to C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\617e7b6d-8d3d-4a54-87d9-a491d43aa967.png
+2023-10-11 17:55:50 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2023-10-11 17:55:50 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 395, in _clean_code
+    tree = ast.parse(code)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\ast.py", line 50, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 22
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\617e7b6d-8d3d-4a54-87d9-a491d43aa967.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\617e7b6d-8d3d-4a54-87d9-a491d43aa967.png" }
+    """
+       ^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 277-278: truncated \UXXXXXXXX escape
+. Retrying
+2023-10-11 17:55:50 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,6h46cdaqveqz@icloud.com,4239623399,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,7j3s1uukoy9@aol.com,0873734533,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,vrnrbzuj8wj@outlook.com,6790732814,MD,"General Cardiology, In...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,j7dfo-gqt@yahoo.com,6353313659,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,n1i6by@hotmail.com,2004939279,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+3rd Year Cardiology Fe...,Others
+2nd Year Cardiology Fe...,Others
+AANP...,Others
+Accountant...,Others
+1st Year Cardiology Fe...,Others
+</dataframe>
+
+The user asked the following question:
+User 1: describe diagramatically top 10 cities Physicians living?
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare
+    df_physicians = dfs[0]
+    
+    # Process
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Most Physicians')
+    plt.savefig('temp_chart.png')
+    plt.close()
+    
+    return {"type": "plot", "value": "temp_chart.png"}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\smart_datalake\__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 217, in execute_code
+    code_to_run = self._clean_code(code)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\AppData\Roaming\Python\Python311\site-packages\pandasai\helpers\code_manager.py", line 395, in _clean_code
+    tree = ast.parse(code)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\ChandPashaShaik\anaconda3\envs\langchain\Lib\ast.py", line 50, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 22
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\617e7b6d-8d3d-4a54-87d9-a491d43aa967.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\617e7b6d-8d3d-4a54-87d9-a491d43aa967.png" }
+    """
+       ^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 277-278: truncated \UXXXXXXXX escape
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2023-10-11 17:55:59 [INFO] Saving charts to C:\Users\ChandPashaShaik\Anaconda\python_code\Demo-11-10-2023\notebook\617e7b6d-8d3d-4a54-87d9-a491d43aa967.png
+2023-10-11 17:56:17 [INFO] Question: describe diagramatically top 10 cities Physicians living?
+2023-10-11 17:56:17 [INFO] Running PandasAI with openai LLM...
+2023-10-11 17:56:17 [INFO] Prompt ID: 71d9a124-efb7-496b-a057-8d9416e2bc3d
+2023-10-11 17:56:17 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 24028 rows and 15 columns.
+This is the metadata of the dataframe dfs[0]:
+Practice Name,Web Address,Physician Name,First Name,Middle Name,Last Name,Address,City,State,Zip Code,Predicted Email's,Phone Number,Credentials,Primary Specialty,Buying Personas
+Abington Medical Speci...,https://amscardiology....,Dina Yazmajian,Dina,,Yazmajian,118 Welsh Road Unit B ,Horsham,PA,19044,-4hcqts7j7@yahoo.com,6619942601,MD,"General Cardiology, Ec...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Andrew S Fireman,Andrew,S ,Fireman,118 Welsh Road Unit B ,Horsham,PA,19044,ureimdpzkl5x@yahoo.com,6966487358,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Bruce D Klugherz,Bruce,D ,Klugherz,118 Welsh Road Unit B ,Horsham,PA,19044,qgt-nq84--@yahoo.com,6918427245,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Abhinav C Nair,Abhinav,C ,Nair,118 Welsh Road Unit B ,Horsham,PA,19044,5101clzbprdx@zoho.com,6480375656,MD,"General Cardiology, Pr...",Cardiologists & Electr...
+Abington Medical Speci...,https://amscardiology....,Asoka Balaratna,Asoka,,Balaratna,118 Welsh Road Unit B ,Horsham,PA,19044,oefq69@yahoo.com,8222973166,MD,"General Cardiology, In...",Cardiologists & Electr...
+</dataframe>
+
+<dataframe>
+Dataframe dfs[1], with 2313 rows and 2 columns.
+This is the metadata of the dataframe dfs[1]:
+Primary Specialty,Type
+2nd Year Cardiology Fe...,Others
+AANP...,Others
+3rd Year Cardiology Fe...,Others
+1st Year Cardiology Fe...,Others
+Accountant...,Others
+</dataframe>
+
+<conversation>
+User 1: describe diagramatically top 10 cities Physicians living?
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-11 17:56:29 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare: Preprocessing and cleaning data if necessary
+    df_physicians = dfs[0]
+    
+    # Process: Manipulating data for analysis
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    
+    # Analyze: Conducting the actual analysis
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('temp_chart.png')
+    plt.close()
+    
+    # Return the path of the plot
+    return { "type": "plot", "value": "temp_chart.png" }
+```
+
+2023-10-11 17:56:29 [INFO] Saving charts to plots/71d9a124-efb7-496b-a057-8d9416e2bc3d.png
+2023-10-11 17:56:29 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in plots/71d9a124-efb7-496b-a057-8d9416e2bc3d.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "plots/71d9a124-efb7-496b-a057-8d9416e2bc3d.png" }
+    """
+    df_physicians = dfs[0]
+    top_10_cities = df_physicians['City'].value_counts().head(10)
+    plt.figure(figsize=(10, 6))
+    top_10_cities.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of Physicians')
+    plt.title('Top 10 Cities with Physicians')
+    plt.savefig('plots/71d9a124-efb7-496b-a057-8d9416e2bc3d.png')
+    plt.close()
+    return {'type': 'plot', 'value': 'plots/71d9a124-efb7-496b-a057-8d9416e2bc3d.png'}
+        ```
+2023-10-11 17:56:29 [INFO] Answer: {'type': 'plot', 'value': 'plots/71d9a124-efb7-496b-a057-8d9416e2bc3d.png'}
+2023-10-11 17:56:29 [INFO] Executed in: 11.710686922073364s
